@@ -4,7 +4,20 @@ import { createTable } from './table.template';
 export class Table extends ExcelComponent {
   static className = 'excel__table';
 
-  toHTML() {
-    return createTable(100);
+  constructor($root) {
+    super($root, {
+      listeners: ['mousedown'],
+    })
   }
+
+  toHTML() {
+    return createTable(150);
+  }
+
+  onMousedown(event) {
+    if (event.target.dataset.resize) {
+      console.log('start');
+    }
+  }
+
 }
